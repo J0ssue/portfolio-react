@@ -1,10 +1,10 @@
-import { GlobalStyles } from "../src/shared/Global";
+// import { GlobalStyles } from "../src/shared/Global";
 
 // Global decorator to apply the styles to all stories
 export const decorators = [
   (Story) => (
     <>
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
       <Story />
     </>
   ),

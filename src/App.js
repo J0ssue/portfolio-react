@@ -1,25 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Suspense } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Global } from "@emotion/react";
+import globalStyles from "./shared/Global";
+import routes from "./pages/index";
+// import { ThemeProvider } from "styled-components";
 
-function App() {
+// for api purposes
+// import ApiContext from "./components/ApiContext/ApiContext";
+// import { index } from "./utils/restClient";
+
+// components
+// import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.js";
+
+const AppRoute = () => {
+  function renderRoutes() {
+    return routes.map((route, i) => (
+      <Route key={i} exact path={route.path} component={route.component} />
+    ));
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      {/* <ErrorBoundary hasError={serverError}> */}
+      {/* TODO: build loading component. */}
+      <Global styles={globalStyles} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>{renderRoutes()}</Switch>
+      </Suspense>
+      {/* </ErrorBoundary> */}
+    </Router>
   );
-}
+};
 
-export default App;
+export default AppRoute;
