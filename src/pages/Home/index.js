@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import navigationConfig from "../../config/navigationConfig";
+import * as urls from "../urls";
 
 const Home = () => {
   return (
     <div>
       <nav>
         <ul>
-          <Link to={navigationConfig.cardPreview}>card preview</Link>
+          <Link to={urls.CARD_PREVIEW}>card preview</Link>
         </ul>
       </nav>
       <h1>Home Page</h1>

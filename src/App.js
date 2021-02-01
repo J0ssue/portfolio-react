@@ -11,6 +11,7 @@ import routes from "./pages/index";
 
 // components
 // import ErrorBoundary from "./components/ErrorBoundary/ErrorBoundary.js";
+import HeaderNavigation from "./components/HeaderNavigation";
 
 const AppRoute = () => {
   function renderRoutes() {
@@ -24,6 +25,7 @@ const AppRoute = () => {
       {/* <ErrorBoundary hasError={serverError}> */}
       {/* TODO: build loading component. */}
       <Global styles={globalStyles} />
+      <HeaderNavigation routes={routes} />
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>{renderRoutes()}</Switch>
       </Suspense>
